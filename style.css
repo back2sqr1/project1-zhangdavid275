@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'MomsTypewriter';
+  src: url('./fonts/MomsTypewriter.ttf') format('truetype'),
+       url('./fonts/MomsTypewriter.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'MomsTypewriter', 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+  background-color: #000;
+  color: #00ff00;
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-left: 50px;
+}
+
+
+#personal-title {
+  font-family: 'MomsTypewriter', 'Times New Roman', monospace;
+  font-size: 32px; /* Converted from 3vw */
+  margin-left: 100px; 
+}
+
+#website-title {
+    display: flex;
+    flex-direction: row; /* Arrange children in a row */
+    align-items: flex-start; /* Align items to the top */
+    width: 100%; /* Take the whole width of the screen */
+}
+
+#website-title-left {
+    display: flex;
+    flex-direction: column; /* Stack text and image vertically */
+    align-items: flex-start; /* Align items to the left */
+    
+}
+#website-title-text {
+    display: flex;
+    flex-direction: row; /* Arrange "W" and "ebsite" in a row */
+    align-items: baseline; /* Align text baselines */
+}
+
+#Lain-text {
+    margin-top: -150px; /* Converted from -13vh */
+    font-size: 40px;
+}
+/* Style for "Website" - much larger */
+#website-title-w {
+  font-family: 'MomsTypewriter', 'Times New Roman', monospace;
+  font-size: 120px; /* Converted from 10vw */
+  font-weight: bold;
+  margin-top: -100px; /* Converted from -13vh */
+}
+#website-title-ebsite {
+  font-family: 'MomsTypewriter', 'Times New Roman', monospace;
+  font-size: 84px; /* Converted from 7vw */
+  font-weight: bold;
+  margin-top: -60px; /* Converted from -8vh */
+}
+
+/* Style for the video */
+#website-video {
+  width: 430px; /* Set video width */
+  height: auto; /* Maintain aspect ratio */
+  margin-top: -80px; /* Align with the text */
+  margin-left: auto; 
+  margin-right: 0;
+  padding-left: 20px;
+}
+
+/* Lain image styling */
+#lain-image {
+  width: 400px;
+  height: auto;
+}
+
+/* Two-column content section */
+.content-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 30px; /* Space between columns */
+  margin-top: 50px;
+}
+
+.column {
+  padding: 20px;
+  border: 1px solid #003300;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.column h3 {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #00ff00;
+  padding-bottom: 5px;
+}
+
+.tech-text {
+  color: #00ff00;
+  font-size: 11px;
+  margin: 10px 0;
+}
+
+.binary-text {
+  font-family: 'Courier New', monospace;
+  font-size: 15px;
+  color: #006600;
+  word-break: break-all;
+  line-height: 1.1;
+  margin: 15px 0;
+  background-color: rgba(0, 51, 0, 0.1);
+  padding: 10px;
+}
+
+

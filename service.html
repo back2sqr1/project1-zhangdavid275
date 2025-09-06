@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service - Retro Gaming</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Press Start 2P', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .title {
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-align: center;
+            letter-spacing: 8px;
+        }
+        
+        .japanese-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(1rem, 4vw, 2rem);
+            color: #0d9ae0;
+            opacity: 0.7;
+        }
+        
+        .main-content {
+            background: 
+                radial-gradient(circle at 20px 20px, #000 2px, transparent 2px),
+                radial-gradient(circle at 60px 60px, #000 1px, transparent 1px),
+                linear-gradient(135deg, #2be253, #00ff00);
+            background-size: 40px 40px, 20px 20px, 100% 100%;
+            border: 4px solid #000;
+            padding: 40px;
+            position: relative;
+            min-height: 600px;
+        }
+        
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.3) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+        
+        
+        
+        .description {
+            color: #ffb6c1;
+            font-size: 10px;
+            line-height: 1.6;
+            text-align: left;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            margin-top: 30px;
+            text-shadow: 1px 1px 0px #000;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">< RETURN TO WIRED</a>
+    <div class="halftone-bg"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">SERVICE</h1>
+            <div class="japanese-text">やどん</div>
+        </header>
+        
+        <main class="main-content">
+            <div class="grid-overlay"></div>
+            
+            <div class="description">
+                ヤドンは、高相色の脳袋を持つピンクの
+                ポケモンです。大きくうつろな目、カールし
+                た尾、上顎から突き出た2本の小さな尖った
+                歯が特徴です。手には3本の爪がある指が
+                あり、足には2本の爪がある足指があります。
+                尻尾にはシェルダーが付いています...
+            </div>
+        </main>
+        
+    </div>
+</body>
+</html>
