@@ -12,49 +12,97 @@
 <body>
     <a href="index.html" class="back-link">< RETURN TO WIRED</a>
     
-    <h1 id="personal-title">portfolio.exe</h1>
+    <div class="portfolio-title-container">
+        <h1 id="personal-title">portfolio.exe</h1>
+        <img src="media/glitched_lain.gif" alt="Glitched Lain" class="title-glitch-gif">
+    </div>
     
-
     <div class="qualification-section">
-        <div class="qualification-header">Featured Projects & Achievements</div>
+        <div class="qualification-header">File Cabinet - Project Archive</div>
         
-        <div class="qualification-item clickable-project" data-url="https://github.com/back2sqr1/WeedRoomba">
-            <div class="qualification-title">Weed Roomba - 1st Place @ TidalHack 2024</div>
-            <div class="qualification-details">Autonomous farming robot with SLAM, NAV2, ROS, C++</div>
-            <div class="qualification-details">• Integrated YOLOv8 computer vision for weed/crop/trash identification</div>
-            <div class="qualification-details">• Designed complete farm environment simulation in Blender</div>
-            <div class="qualification-date">ACHIEVEMENT: HACKATHON_WINNER | TECH: ROS2 + CV</div>
-        </div>
+        <div class="file-cabinet">
+            <div class="file-folder">
+                <div class="file-tab" data-url="https://github.com/back2sqr1/WeedRoomba">
+                    <div class="file-title">Weed Roomba - 1st Place @ TidalHack 2024</div>
+                    <div class="file-status">WINNER</div>
+                </div>
+                <div class="file-contents">
+                    <div class="file-details">Autonomous farming robot with SLAM, NAV2, ROS, C++</div>
+                    <div class="file-details">Integrated YOLOv8 computer vision for weed/crop/trash identification</div>
+                    <div class="file-details">Designed complete farm environment simulation in Blender</div>
+                    <div class="file-tech">TECH_STACK: ROS2 + Computer Vision + SLAM<br>STATUS: DEPLOYED | ACHIEVEMENT: HACKATHON_WINNER</div>
+                    <a href="https://github.com/back2sqr1/WeedRoomba" target="_blank" class="file-link-btn">View Project →</a>
+                </div>
+            </div>
 
-        <div class="qualification-item clickable-project" data-url="https://www.linkedin.com/pulse/exploring-automation-industry-one-email-time-david-zhang-fe6mc/">
-            <div class="qualification-title">LeRobot - Reinforcement Learning System</div>
-            <div class="qualification-details">PCB-based robotic arm with RL and imitation learning</div>
-            <div class="qualification-details">• Assembled hardware from schematic to production with 3D printing</div>
-            <div class="qualification-details">• Implemented PyTorch-based learning pipeline with comparative analysis</div>
-            <div class="qualification-date">INNOVATION: CUSTOM_HARDWARE + AI | STATUS: DEPLOYED</div>
-        </div>
+            <div class="file-folder">
+                <div class="file-tab" data-url="https://www.linkedin.com/pulse/exploring-automation-industry-one-email-time-david-zhang-fe6mc/">
+                    <div class="file-title">LeRobot - Reinforcement Learning System</div>
+                    <div class="file-status">DEPLOYED</div>
+                </div>
+                <div class="file-contents">
+                    <div class="file-details">PCB-based robotic arm with RL and imitation learning</div>
+                    <div class="file-details">Assembled hardware from schematic to production with 3D printing</div>
+                    <div class="file-details">Implemented PyTorch-based learning pipeline with comparative analysis</div>
+                    <div class="file-tech">TECH_STACK: PyTorch + Reinforcement Learning + Hardware<br>STATUS: DEPLOYED | INNOVATION: CUSTOM_HARDWARE + AI</div>
+                    <a href="https://www.linkedin.com/pulse/exploring-automation-industry-one-email-time-david-zhang-fe6mc/" target="_blank" class="file-link-btn">View Article →</a>
+                </div>
+            </div>
 
-        <div class="qualification-item clickable-project" data-url="https://project-dinn.vercel.app/">
-            <div class="qualification-title">Multi-Agent Warehouse Algorithm</div>
-            <div class="qualification-details">Original algorithm for optimal robot task allocation</div>
-            <div class="qualification-details">• Created custom website demonstrating algorithm potential</div>
-            <div class="qualification-details">• Compiled datasets with 15,000+ LiDAR scans and 7,000 images</div>
+            <div class="file-folder">
+                <div class="file-tab" data-url="https://project-dinn.vercel.app/">
+                    <div class="file-title">Multi-Agent Warehouse Algorithm</div>
+                    <div class="file-status">PATENT</div>
+                </div>
+                <div class="file-contents">
+                    <div class="file-details">Original algorithm for optimal robot task allocation</div>
+                    <div class="file-details">Created custom website demonstrating algorithm potential</div>
+                    <div class="file-details">Compiled datasets with 15,000+ LiDAR scans and 7,000 images</div>
+                    <div class="file-tech">TECH_STACK: Multi-Agent Systems + Optimization + Data Pipeline<br>STATUS: PATENT_PENDING | RESEARCH: PEER_REVIEWED</div>
+                    <a href="https://project-dinn.vercel.app/" target="_blank" class="file-link-btn">View Demo →</a>
+                </div>
+            </div>
         </div>
     </div>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const clickableProjects = document.querySelectorAll('.clickable-project');
+            // File cabinet accordion functionality
+            const fileTabs = document.querySelectorAll('.file-tab');
             
-            clickableProjects.forEach(project => {
-                project.addEventListener('click', function() {
-                    const url = this.dataset.url;
-                    if (url) {
-                        window.open(url, '_blank');
+            fileTabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const fileFolder = this.parentElement;
+                    const fileContents = fileFolder.querySelector('.file-contents');
+                    const isActive = fileContents.classList.contains('active');
+                    
+                    // Close all other folders
+                    document.querySelectorAll('.file-contents.active').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.querySelectorAll('.file-tab.active').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    
+                    // Toggle current folder
+                    if (!isActive) {
+                        fileContents.classList.add('active');
+                        this.classList.add('active');
                     }
                 });
             });
+            
+            // Handle direct link clicks on file buttons
+            const fileLinkBtns = document.querySelectorAll('.file-link-btn');
+            fileLinkBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent accordion toggle
+                });
+            });
+        
         });
     </script>
 </body>
