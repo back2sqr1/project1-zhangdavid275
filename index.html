@@ -4,22 +4,24 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css"></link>
     <meta charset="UTF-8" />  
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="scripts/toggle.js"></script>
   </head>
   <body>
-    <h1 id="personal-title">david's personal</h1>
-    
-    <div id="website-title">
-      <div id="website-title-left">
-        <div id="website-title-text">
-          <p id="website-title-w">W</p><p id="website-title-ebsite">ebsite</p>
+    <div id="heading">
+      <h1 id="personal-title">david's personal</h1>
+      <div id="website-title">
+        <div id="website-title-left">
+          <div id="website-title-text">
+            <p id="website-title-w">W</p><p id="website-title-ebsite">ebsite</p>
+          </div>
+          <p class="tech-text" id="Lain-Text">シリアルエクスペリメンツ・Lain (1999)</p>
+          <img src="media/lain_wide_landing.jpg" alt="Lain" id="lain-image">
         </div>
-        <p class="tech-text" id="Lain-Text">シリアルエクスペリメンツ・Lain (1999)</p>
-        <img src="media/lain_wide_landing.jpg" alt="Lain" id="lain-image">
+        <video id="website-video" autoplay muted loop>
+          <source src="media/lain_landing_page.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
-      <video id="website-video" autoplay muted loop>
-        <source src="media/lain_landing_page.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
     </div>
     
     
@@ -68,5 +70,9 @@
         </p>
       </div>
     </div>
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
   </body>
 </html>
