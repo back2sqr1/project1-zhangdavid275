@@ -63,7 +63,7 @@ body {
 
 /* Style for the video */
 #website-video {
-  width: 430px; /* Set video width */
+  width: 250px; /* Set video width */
   height: auto; /* Maintain aspect ratio */
   margin-top: -80px; /* Align with the text */
   margin-left: auto; 
@@ -71,18 +71,12 @@ body {
   padding-left: 20px;
 }
 
-/* Lain image styling */
-#lain-image {
-  width: 400px;
-  height: auto;
-}
-
 /* Two-column content section */
 .content-section {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two equal columns */
   gap: 30px; /* Space between columns */
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .column {
@@ -95,7 +89,7 @@ body {
 .column h3 {
   color: #ffffff;
   font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   border-bottom: 1px solid #00ff00;
   padding-bottom: 5px;
@@ -118,7 +112,7 @@ body {
   padding: 10px;
 }
 
-
+/* Switch styles for toggle functionality */
 .switch {
   position: fixed;
   bottom: 20px;
@@ -178,3 +172,291 @@ body {
 .switch input[type="checkbox"]:checked:active + .slider::after {
   transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
 }
+
+/* Portfolio page styles */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background-color: rgba(0, 255, 0, 0.05);
+  border: 2px solid #00ff00;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  border-color: #ffffff;
+  cursor: pointer;
+}
+
+.project-title {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.clickable-project {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-project:hover {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+  background-color: rgba(0, 255, 0, 0.1);
+  border-color: #ffffff;
+  transform: translateX(5px);
+}
+
+.clickable-project .qualification-title:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.project-description {
+  color: #00ff00;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.project-tech {
+  color: #006600;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.back-link {
+  color: #00ff00;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #ffffff;
+}
+
+/* Qualification section styling */
+.qualification-section {
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px solid #003300;
+  background-color: rgba(0, 255, 0, 0.02);
+}
+
+.qualification-header {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #00ff00;
+  padding-bottom: 5px;
+}
+
+.qualification-item {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.qualification-title {
+  color: #00ff00;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.qualification-details {
+  color: #00ff00;
+  font-size: 11px;
+  margin: 5px 0;
+}
+
+.qualification-date {
+  color: #006600;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.skill-category {
+  background-color: rgba(0, 51, 0, 0.1);
+  padding: 15px;
+  border: 1px solid #003300;
+}
+
+/* Japanese Obi Strip for qualifications page */
+.obi-strip {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 80px;
+  height: 100vh;
+  background-color: #000000;
+  border-left: 3px solid #00ff00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.obi-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #ffffff;
+  font-family: 'Noto Sans JP', 'M PLUS 1 Code', serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Qualifications Photo Styling */
+.qualifications-photo {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  border: 3px solid #00ff00;
+  filter: grayscale(100%) brightness(0.7) contrast(1.5) sepia(100%) hue-rotate(90deg) saturate(2);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.qualifications-photo:hover {
+  filter: grayscale(100%) brightness(0.8) contrast(1.7) sepia(100%) hue-rotate(90deg) saturate(2.5);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+/* GenAI page styles */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.video-container {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+/* Service page styles */
+.screen-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.upper-section {
+  height: 66.67vh; /* 2/3 of screen height */
+  background-color: rgba(0, 0, 0, 0.9);
+  border-bottom: 2px solid #00ff00;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-title {
+  font-family: 'MomsTypewriter', 'Courier New', monospace;
+  font-size: 2rem;
+  color: #00ff00;
+  margin: 0;
+  text-shadow: 0 0 10px #00ff00;
+  letter-spacing: 0.75em;
+  text-align: center;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.cityscape-image {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  object-fit: cover;
+  object-position: center center;
+  border: none;
+  display: block;
+}
+
+.bottom-section {
+  height: 33.33vh; /* 1/3 of screen height */
+  background-color: rgba(0, 51, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Page-specific body overrides */
+.qualifications-page body {
+  margin-right: 90px;
+}
+
+body.service-page {
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Service page back-link override */
+.service-page .back-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+/* Qualifications page two-column layout */
+.qualifications-main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+  padding-right: 100px; /* Account for obi strip */
+}
+
+.qualifications-left-column {
+  padding-right: 20px;
+}
+
+.qualifications-right-column {
+  display: flex;
+  flex-direction: column ;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.pathplanning-gif {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 30px 0;
+  border: 3px solid #00ff00;
+  background-color: #000000;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  transition: all 0.3s ease;
+  filter: grayscale(100%) brightness(0.6) contrast(2.0) sepia(100%) hue-rotate(80deg) saturate(5) brightness(1.2);
+  padding: 5px;
+}
+

@@ -6,114 +6,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=M+PLUS+1+Code:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css?v=2025">
     <meta charset="UTF-8" />
-    <style>
-        .qualification-section {
-            margin: 30px 0;
-            padding: 20px;
-            border: 1px solid #003300;
-            background-color: rgba(0, 255, 0, 0.02);
-        }
-        .qualification-header {
-            color: #ffffff;
-            font-size: 16px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 5px;
-        }
-        .qualification-item {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        .qualification-title {
-            color: #00ff00;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .qualification-details {
-            color: #00ff00;
-            font-size: 11px;
-            margin: 5px 0;
-        }
-        .qualification-date {
-            color: #006600;
-            font-size: 10px;
-            font-family: 'Courier New', monospace;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .skill-category {
-            background-color: rgba(0, 51, 0, 0.1);
-            padding: 15px;
-            border: 1px solid #003300;
-        }
-        .back-link {
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .back-link:hover {
-            color: #ffffff;
-        }
-        
-        /* Japanese Obi Strip */
-        .obi-strip {
-            position: fixed;
-            right: 0;
-            top: 0;
-            width: 80px;
-            height: 100vh;
-            background-color: #000000;
-            border-left: 3px solid #00ff00;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        
-        .obi-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            color: #ffffff;
-            font-family: 'Noto Sans JP', 'M PLUS 1 Code', serif;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 8px;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        }
-        
-        /* Adjust main content to account for obi strip */
-        body {
-            margin-right: 90px;
-        }
-        
-        /* Qualifications Photo Styling */
-        .qualifications-photo {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            display: block;
-            border: 3px solid #00ff00;
-            filter: grayscale(100%) brightness(0.7) contrast(1.5) sepia(100%) hue-rotate(90deg) saturate(2);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .qualifications-photo:hover {
-            filter: grayscale(100%) brightness(0.8) contrast(1.7) sepia(100%) hue-rotate(90deg) saturate(2.5);
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-        }
-    </style>
 </head>
-<body>
+<body class="qualifications-page">
     <!-- Japanese Obi Strip -->
     <div class="obi-strip">
         <div class="obi-text">資格・技能証明書</div>
@@ -121,33 +17,12 @@
     
     <a href="index.html" class="back-link">< RETURN TO WIRED</a>
     
-    
-    <!-- Qualifications Photo -->
-    <img src="media/qualifications_photo.jpg" alt="Qualifications Certificate" class="qualifications-photo">
-    
-    <div class="content-section">
-        <div class="column">
-            <h3>EDUCATION LOG</h3>
-            <p class="tech-text">Academic credentials and certifications</p>
-            <div class="binary-text">
-                01000101 01000100 01010101 01000011 01000001 01010100 01001001 01001111
-                01001110 00100000 01000100 01000001 01010100 01000001 01000010 01000001
-                01010011 01000101 00100000 01001100 01001111 01000001 01000100 01000101
-            </div>
-        </div>
-        
-        <div class="column">
-            <h3>SKILL MATRIX</h3>
-            <p class="tech-text">
-                > SCANNING CAPABILITIES...<br/>
-                > TECHNICAL PROFICIENCY: HIGH<br/>
-                > LEARNING ALGORITHM: ACTIVE<br/>
-                > ADAPTATION RATE: OPTIMAL
-            </p>
-        </div>
-    </div>
-
-    <div class="qualification-section">
+    <h1 id="personal-title">qualifications.bat</h1>   
+    <!-- Two-column layout container -->
+    <div class="qualifications-main-container">
+        <!-- Left column with content -->
+        <div class="qualifications-left-column">
+            <div class="qualification-section">
         <div class="qualification-header">Educational Background</div>
         
         <div class="qualification-item">
@@ -161,7 +36,7 @@
     <div class="qualification-section">
         <div class="qualification-header">Professional Experience</div>
         
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://agi.safe.ai/">
             <div class="qualification-title">Technical Advisor Intern</div>
             <div class="qualification-details">Scale AI | November 2024 - Present</div>
             <div class="qualification-details">• Analyzed large datasets with Google Deepmind researchers on ARC-AGI dataset</div>
@@ -169,7 +44,7 @@
             <div class="qualification-date">STATUS: CURRENT | CLEARANCE: ACTIVE</div>
         </div>
 
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://youtu.be/YrTa9aShn9E">
             <div class="qualification-title">Robotics Researcher</div>
             <div class="qualification-details">Texas A&M University | May 2025 - August 2025</div>
             <div class="qualification-details">• Developed multi-agent task allocation algorithm for warehouse optimization</div>
@@ -177,7 +52,7 @@
             <div class="qualification-date">ACHIEVEMENT: ALGORITHM_PATENT_PENDING</div>
         </div>
 
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://www.linkedin.com/feed/update/urn:li:activity:7227841552826392576/">
             <div class="qualification-title">Software Engineering Intern</div>
             <div class="qualification-details">Daikin North America | May 2023 - August 2023</div>
             <div class="qualification-details">• Built MVC administrative app processing 20+ years of historical AC data</div>
@@ -186,59 +61,29 @@
         </div>
     </div>
 
-    <div class="qualification-section">
-        <div class="qualification-header">Technical Skills</div>
+    
+        </div>
         
-        <div class="skills-grid">
-            <div class="skill-category">
-                <div class="qualification-title">Programming Languages</div>
-                <div class="qualification-details">
-                    • Java [PROFICIENCY: 90%]<br/>
-                    • Python [PROFICIENCY: 95%]<br/>
-                    • C/C++ [PROFICIENCY: 85%]<br/>
-                    • JavaScript [PROFICIENCY: 88%]<br/>
-                    • SQL (Postgres) [PROFICIENCY: 80%]<br/>
-                    • HTML/CSS [PROFICIENCY: 85%]<br/>
-                    • R [PROFICIENCY: 75%]
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="qualification-title">Frameworks & Libraries</div>
-                <div class="qualification-details">
-                    • React.js [EXPERIENCE: 2+ years]<br/>
-                    • Node.js [EXPERIENCE: 2+ years]<br/>
-                    • NextJS [EXPERIENCE: 1+ year]<br/>
-                    • ThreeJS [EXPERIENCE: 1+ year]<br/>
-                    • ROS2 [EXPERIENCE: 1+ year]<br/>
-                    • PyTorch [EXPERIENCE: 1+ year]
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="qualification-title">AI/ML & Robotics</div>
-                <div class="qualification-details">
-                    • SLAM & Navigation (Nav2) [ADVANCED]<br/>
-                    • Computer Vision (YOLOv8) [ADVANCED]<br/>
-                    • Reinforcement Learning [INTERMEDIATE]<br/>
-                    • Imitation Learning [INTERMEDIATE]<br/>
-                    • Gazebo Simulation [ADVANCED]<br/>
-                    • Multi-agent Systems [EXPERT]
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="qualification-title">Tools & Platforms</div>
-                <div class="qualification-details">
-                    • Git/GitHub [EXPERT]<br/>
-                    • Docker [INTERMEDIATE]<br/>
-                    • Google Cloud Platform [INTERMEDIATE]<br/>
-                    • AWS (S3, Lambda) [ADVANCED]<br/>
-                    • VS Code [EXPERT]<br/>
-                    • Visual Studio [ADVANCED]
-                </div>
-            </div>
+        <!-- Right column with pathplanning GIF -->
+        <div class="qualifications-right-column">
+            <img src="media/pathplanning.gif" alt="Path Planning Algorithm Visualization" class="pathplanning-gif">
+            <p>David currently attends Texas A&M University as a junior at the time of this writing. He studies computer science, and is a part of many organizations for both academic and social reasons. In an attempt to find his softer and arguably unproductive side, he has decided to make a last minute addition to minor in English. He doesn’t believe it will amount to much, but he loves reading so much he decided that independent study wasn’t enough. </p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableProjects = document.querySelectorAll('.clickable-project');
+            
+            clickableProjects.forEach(project => {
+                project.addEventListener('click', function() {
+                    const url = this.dataset.url;
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

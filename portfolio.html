@@ -6,119 +6,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=M+PLUS+1+Code:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css?v=2025">
     <meta charset="UTF-8" />
-    <style>
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .project-card {
-            background-color: rgba(0, 255, 0, 0.05);
-            border: 2px solid #00ff00;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-        .project-card:hover {
-            background-color: rgba(0, 255, 0, 0.1);
-            border-color: #ffffff;
-        }
-        .project-title {
-            color: #ffffff;
-            font-size: 18px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .project-description {
-            color: #00ff00;
-            font-size: 12px;
-            line-height: 1.4;
-            margin-bottom: 15px;
-        }
-        .project-tech {
-            color: #006600;
-            font-size: 10px;
-            font-family: 'Courier New', monospace;
-        }
-        .back-link {
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .back-link:hover {
-            color: #ffffff;
-        }
-        
-        /* Qualification section styling for projects */
-        .qualification-section {
-            margin: 30px 0;
-            padding: 20px;
-            border: 1px solid #003300;
-            background-color: rgba(0, 255, 0, 0.02);
-        }
-        .qualification-header {
-            color: #ffffff;
-            font-size: 16px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 5px;
-        }
-        .qualification-item {
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-        .qualification-title {
-            color: #00ff00;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .qualification-details {
-            color: #00ff00;
-            font-size: 11px;
-            margin: 5px 0;
-        }
-        .qualification-date {
-            color: #006600;
-            font-size: 10px;
-            font-family: 'Courier New', monospace;
-        }
-    </style>
 </head>
 <body>
     <a href="index.html" class="back-link">< RETURN TO WIRED</a>
     
     <h1 id="personal-title">portfolio.exe</h1>
     
-    <div class="content-section">
-        <div class="column">
-            <h3>PROJECTS.DAT</h3>
-            <p class="tech-text">Compiled experiences from the digital realm</p>
-            <div class="binary-text">
-                01010000 01010010 01001111 01001010 01000101 01000011 01010100 01010011
-                00100000 01000001 01010010 01000011 01001000 01001001 01010110 01000101
-            </div>
-        </div>
-        
-        <div class="column">
-            <h3>SYSTEM STATUS</h3>
-            <p class="tech-text">
-                > LOADING PORTFOLIO DATA...<br/>
-                > AUTHENTICATION: VERIFIED<br/>
-                > ACCESS LEVEL: PUBLIC<br/>
-                > STATUS: ACTIVE
-            </p>
-        </div>
-    </div>
 
     <div class="qualification-section">
         <div class="qualification-header">Featured Projects & Achievements</div>
         
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://github.com/back2sqr1/WeedRoomba">
             <div class="qualification-title">Weed Roomba - 1st Place @ TidalHack 2024</div>
             <div class="qualification-details">Autonomous farming robot with SLAM, NAV2, ROS, C++</div>
             <div class="qualification-details">• Integrated YOLOv8 computer vision for weed/crop/trash identification</div>
@@ -126,7 +26,7 @@
             <div class="qualification-date">ACHIEVEMENT: HACKATHON_WINNER | TECH: ROS2 + CV</div>
         </div>
 
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://www.linkedin.com/pulse/exploring-automation-industry-one-email-time-david-zhang-fe6mc/">
             <div class="qualification-title">LeRobot - Reinforcement Learning System</div>
             <div class="qualification-details">PCB-based robotic arm with RL and imitation learning</div>
             <div class="qualification-details">• Assembled hardware from schematic to production with 3D printing</div>
@@ -134,67 +34,28 @@
             <div class="qualification-date">INNOVATION: CUSTOM_HARDWARE + AI | STATUS: DEPLOYED</div>
         </div>
 
-        <div class="qualification-item">
+        <div class="qualification-item clickable-project" data-url="https://project-dinn.vercel.app/">
             <div class="qualification-title">Multi-Agent Warehouse Algorithm</div>
             <div class="qualification-details">Original algorithm for optimal robot task allocation</div>
             <div class="qualification-details">• Created custom website demonstrating algorithm potential</div>
             <div class="qualification-details">• Compiled datasets with 15,000+ LiDAR scans and 7,000 images</div>
-            <div class="qualification-date">RESEARCH: PEER_REVIEWED | PATENT: PENDING</div>
         </div>
     </div>
 
-    <div class="portfolio-grid">
-        <div class="project-card">
-            <div class="project-title">Daikin Administrative App</div>
-            <div class="project-description">
-                Model View Controller administrative application for processing 20+ years 
-                of historical air conditioning data. Engineered Python scripts for S3 data 
-                retrieval and AWS Lambda integration.
-            </div>
-            <div class="project-tech">
-                TECH_STACK: Python | AWS S3 | Lambda | MVC Architecture
-                STATUS: PRODUCTION
-            </div>
-        </div>
 
-        <div class="project-card">
-            <div class="project-title">Research Website Portfolio</div>
-            <div class="project-description">
-                Custom website designed to illustrate multi-agent task allocation algorithm 
-                potential to the research community. Built to showcase logistics optimization 
-                in warehouse environments.
-            </div>
-            <div class="project-tech">
-                TECH_STACK: React.js | Node.js | ThreeJS | Visualization
-                STATUS: DEPLOYED
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-title">Off-Road Vehicle Dataset</div>
-            <div class="project-description">
-                Compiled comprehensive datasets for autonomous off-road vehicles across 
-                Texas and Maryland. Processed over 15,000 LiDAR scans and 7,000 images 
-                for research applications.
-            </div>
-            <div class="project-tech">
-                TECH_STACK: LiDAR Processing | Computer Vision | Data Pipeline
-                STATUS: RESEARCH_ACTIVE
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="project-title">Task Allocation Research</div>
-            <div class="project-description">
-                Presented survey paper on task allocation research to university faculty. 
-                Comprehensive analysis of multi-agent systems and optimization algorithms 
-                for robotic coordination.
-            </div>
-            <div class="project-tech">
-                TECH_STACK: Academic Research | Multi-agent Systems | Optimization
-                STATUS: PUBLISHED
-            </div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickableProjects = document.querySelectorAll('.clickable-project');
+            
+            clickableProjects.forEach(project => {
+                project.addEventListener('click', function() {
+                    const url = this.dataset.url;
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
