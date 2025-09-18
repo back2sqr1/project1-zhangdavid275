@@ -14,6 +14,42 @@
     <!-- Japanese Obi Strip -->
     <img id="background-video" src="media/lain_computer_up_close.gif" alt="Lain On Computer Background">
     <audio id="lain_ambience" src="media/lain_ambience.mp3" loop></audio>
+    
+    <!-- Invisible hover zones over the qualification items -->
+    <div id="hover-zones" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 15;">
+      <!-- Education hover area -->
+      <div class="hover-zone" data-content="education-info" 
+           style="position: absolute; top: 35%; left: 30%; width: 10%; height: 15%; pointer-events: all; cursor: pointer; z-index: 16;"
+           onmouseenter="updateRightTerminal('education-info')" 
+           onmouseleave="resetRightTerminal()"
+           onclick="window.open('https://drive.google.com/file/d/1WnvQiEp9rNyQ3r9Q2-_SCrSufpC4C6Qo/view?usp=sharing', '_blank')">
+      </div>
+      
+      <!-- Scale AI Technical Advisor hover area -->
+      <div class="hover-zone" data-content="scale-ai-intern" 
+           style="position: absolute; top: 40%; right: 30%; width: 10%; height: 12%; pointer-events: all; cursor: pointer; z-index: 16;"
+           onmouseenter="updateRightTerminal('scale-ai-intern')" 
+           onmouseleave="resetRightTerminal()"
+           onclick="window.open('https://agi.safe.ai/', '_blank')">
+      </div>
+      
+      <!-- Robotics Researcher hover area -->
+      <div class="hover-zone" data-content="robotics-researcher" 
+           style="position: absolute; top: 70%; left: 30%; width: 10%; height: 12%; pointer-events: all; cursor: pointer; z-index: 16;"
+           onmouseenter="updateRightTerminal('robotics-researcher')" 
+           onmouseleave="resetRightTerminal()"
+           onclick="window.open('https://youtu.be/YrTa9aShn9E', '_blank')">
+      </div>
+      
+      <!-- Software Engineering Intern hover area -->
+      <div class="hover-zone" data-content="daikin-intern" 
+           style="position: absolute; top: 65%; right: 40%; width: 10%; height: 12%; pointer-events: all; cursor: pointer; z-index: 16;"
+           onmouseenter="updateRightTerminal('daikin-intern')" 
+           onmouseleave="resetRightTerminal()"
+           onclick="window.open('https://www.linkedin.com/feed/update/urn:li:activity:7227841552826392576/', '_blank')">
+      </div>
+    </div>
+    
     <div class="obi-strip">
         <div class="obi-text">資格・技能証明書</div>
     </div>

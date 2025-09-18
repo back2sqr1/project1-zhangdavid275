@@ -78,41 +78,189 @@ document.addEventListener('DOMContentLoaded', function() {
         return { leftTerminal: biosInterface, rightTerminal };
     }
     
-    function extractContentFromIndex() {
-        // Extract content from existing elements
-        const personalTitle = document.querySelector('#personal-title')?.textContent || 'david\'s personal';
-        const websiteTitle = document.querySelector('#website-title-w')?.textContent + 
-                            document.querySelector('#website-title-ebsite')?.textContent || 'Website';
-        const lainText = document.querySelector('#Lain-Text')?.textContent || 'シリアルエクスペリメンツ・Lain (1999)';
+    // Utility function to get clean text content from any element
+    function getElementText(selector, defaultText = '', context = document) {
+        const element = context.querySelector(selector);
+        return element ? element.textContent.trim() : defaultText;
+    }
+    
+    // Utility function to get text from multiple elements
+    function getMultipleElementsText(selector, separator = '\n', context = document) {
+        const elements = context.querySelectorAll(selector);
+        return Array.from(elements).map(el => el.textContent.trim()).join(separator);
+    }
+    
+    // Main content extraction function that can be called externally
+    window.extractPageContent = function(pageType = null) {
+        const currentPage = pageType || window.location.pathname.split('/').pop() || 'index.html';
+        const personalTitle = getElementText('#personal-title', 'david\'s personal');
         
-        const leftColumn = document.querySelector('.column:first-child');
-        const rightColumn = document.querySelector('.column:last-child');
+        if (currentPage === 'qualifications.html') {
+            return {
+                pageType: 'qualifications',
+                title: personalTitle,
+                obiText: getElementText('.obi-text', '資格・技能証明書'),
+                education: {
+                    title: getElementText('.qualification-section .qualification-header', 'Educational Background'),
+                    items: Array.from(document.querySelectorAll('.qualification-section:first-of-type .qualification-item')).map(item => ({
+                        title: getElementText('.qualification-title', '', item),
+                        details: getMultipleElementsText('.qualification-details', ' | ', item),
+                        date: getElementText('.qualification-date', '', item)
+                    }))
+                },
+                experience: Array.from(document.querySelectorAll('.qualification-section')).slice(1).map(section => ({
+                    header: getElementText('.qualification-header', '', section),
+                    items: Array.from(section.querySelectorAll('.qualification-item')).map(item => ({
+                        title: getElementText('.qualification-title', '', item),
+                        details: getMultipleElementsText('.qualification-details', ' | ', item),
+                        date: getElementText('.qualification-date', '', item)
+                    }))
+                })),
+                description: getElementText('.qualifications-right-column p', '')
+            };
+        } else if (currentPage === 'portfolio.html') {
+            return {
+                pageType: 'portfolio',
+                title: personalTitle,
+                projects: Array.from(document.querySelectorAll('.file-folder')).map(item => {
+                    const fileTab = item.querySelector('.file-tab');
+                    return {
+                        title: getElementText('.file-title', '', item),
+                        status: getElementText('.file-status', '', item),
+                        description: getMultipleElementsText('.file-details', ' | ', item),
+                        tech: getElementText('.file-tech', '', item),
+                        url: fileTab?.dataset?.url || getElementText('a.file-link-btn', '', item)?.href || ''
+                    };
+                })
+            };
+        } else if (currentPage === 'service.html') {
+            return {
+                pageType: 'service',
+                title: personalTitle,
+                serviceTitle: getElementText('.service-title', 'SERVICE'),
+                description: getElementText('.bottom-section p', ''),
+                fullContent: `> SERVICE PROTOCOL INITIATED...\n\n=== SINGING CADETS DATABASE ===\n\nORGANIZATION: Texas A&M Singing Cadets\nROLE: Former Social Chairman / Event Coordinator\nSTATUS: Active Member\nNICKNAME: "Flower Boy"\n\nPERFORMANCE HISTORY:\n- University Donation Ceremonies\n- Country Music Events (George Strait)\n- Campus-wide Performances\n- Arts Engagement Programs\n\nCURRENT RESPONSIBILITIES:\n- Event Planning & Coordination\n- Vendor Relations (Houston Florists)\n- Community Outreach\n- Artistic Leadership\n\nCONTRIBUTION STATUS: SIGNIFICANT\nPRIDE LEVEL: MAXIMUM\nARTISTIC IMPACT: ONGOING\n\n> BRIDGING DIGITAL AND ANALOG WORLDS...\n> WHERE CONSCIOUSNESS MEETS CREATIVITY...\n> THE WIRED EXTENDS TO EVERY ASPECT OF BEING...`
+            };    
+        } else {
+            // Default index.html content
+            return {
+                pageType: 'index',
+                title: personalTitle,
+                websiteTitle: getElementText('#website-title-w', '') + getElementText('#website-title-ebsite', ''),
+                lainText: getElementText('#Lain-Text', 'シリアルエクスペリメンツ・Lain (1999)'),
+                leftColumn: {
+                    title: getElementText('.column:first-child h3', 'THE WIRED'),
+                    content: getMultipleElementsText('.column:first-child p', '\n\n')
+                },
+                rightColumn: {
+                    title: getElementText('.column:last-child h3', 'PROTOCOL & SYSTEM LOG'),
+                    content: getMultipleElementsText('.column:last-child p', '\n\n')
+                }
+            };
+        }
+    };
+
+    function extractContentFromPage() {
+        // Use the utility function and format for terminal display
+        const content = window.extractPageContent();
         
-        const leftContent = {
-            title: leftColumn?.querySelector('h3')?.textContent || 'THE WIRED',
-            text: Array.from(leftColumn?.querySelectorAll('p') || []).map(p => p.textContent).join('\n\n')
-        };
+        // Debug logging to see what page is being detected
+        console.log('Page type detected:', content.pageType);
+        console.log('Full content object:', content);
         
-        const rightContent = {
-            title: rightColumn?.querySelector('h3')?.textContent || 'PROTOCOL & SYSTEM LOG',
-            text: Array.from(rightColumn?.querySelectorAll('p') || []).map(p => p.textContent).join('\n\n')
-        };
-        
-        return {
-            header: `${personalTitle}\n${websiteTitle}\n${lainText}\n\n`,
-            left: leftContent,
-            right: rightContent
-        };
+        if (content.pageType === 'qualifications') {
+            // Format qualifications data for terminal display
+            const educationText = content.education.items.map(item => 
+                `${item.title}\n${item.details}\n${item.date}`
+            ).join('\n\n');
+            
+            const experienceText = content.experience.map(section => 
+                `=== ${section.header} ===\n` + 
+                section.items.map(item => `${item.title}\n${item.details}\n${item.date}`).join('\n\n')
+            ).join('\n\n');
+            
+            return {
+                header: `${content.title}\n${content.obiText}\n\n`,
+                left: {
+                    title: 'QUALIFICATIONS DATABASE',
+                    text: `${educationText}\n\n${experienceText}`
+                },
+                right: {
+                    title: 'SUBJECT ANALYSIS',
+                    text: content.description
+                }
+            };
+        } else if (content.pageType === 'portfolio') {
+            // Format portfolio data for terminal display
+            const projectsText = content.projects.map(project => 
+                `${project.title} - ${project.status}\n${project.description}\n${project.tech}`
+            ).join('\n\n');
+            
+            return {
+                header: `${content.title}\nPORTFOLIO DATABASE\n\n`,
+                left: {
+                    title: 'BIOS INTERFACE',
+                    text: 'SYSTEM READY'
+                },
+                right: {
+                    title: 'PROJECT ARCHIVE',
+                    text: projectsText
+                }
+            };
+        } else if (content.pageType === 'service') {
+            // Format service data for terminal display - no hover zones needed
+            return {
+                header: `${content.title}\n${content.serviceTitle}\n\n`,
+                left: {
+                    title: 'BIOS INTERFACE',
+                    text: 'SYSTEM READY'
+                },
+                right: {
+                    title: 'SERVICE MODULE',
+                    text: content.fullContent
+                }
+            };
+        } else {
+            // Default index.html formatting
+            return {
+                header: `${content.title}\n${content.websiteTitle}\n${content.lainText}\n\n`,
+                left: {
+                    title: content.leftColumn.title,
+                    text: content.leftColumn.content
+                },
+                right: {
+                    title: content.rightColumn.title,
+                    text: content.rightColumn.content
+                }
+            };
+        }
     }
     
     function typeWriter(element, text, callback, speed = 30) {
         let i = 0;
         element.innerHTML = '';
         
+        // Convert newlines to HTML breaks for proper display
+        const formattedText = text.replace(/\n/g, '<br>');
+        
         function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
+            if (i < formattedText.length) {
+                // Handle HTML tags properly - don't break them during typing
+                if (formattedText.charAt(i) === '<') {
+                    // Find the end of the HTML tag
+                    let tagEnd = formattedText.indexOf('>', i);
+                    if (tagEnd !== -1) {
+                        // Add the complete tag at once
+                        element.innerHTML += formattedText.substring(i, tagEnd + 1);
+                        i = tagEnd + 1;
+                    } else {
+                        element.innerHTML += formattedText.charAt(i);
+                        i++;
+                    }
+                } else {
+                    element.innerHTML += formattedText.charAt(i);
+                    i++;
+                }
                 typewriterInterval = setTimeout(type, speed);
             } else if (callback) {
                 callback();
@@ -122,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function startTerminalSequence() {
-        const content = extractContentFromIndex();
+        const content = extractContentFromPage();
         const { leftTerminal: biosInterface, rightTerminal } = createTerminal();
         
         // Create BIOS-style content with interactive HTML elements
@@ -174,8 +322,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div style="bottom: 5px; left: 15px; right: 15px; font-size: 8px; border-top: 1px solid #00ff00; padding-top: 5px;">
     <div style="display: flex; justify-content: space-between;">
         <div>
-            <span style="background-color: #00ff00; color: #000000; padding: 0 2px; margin-right: 2px; cursor: pointer;" onclick="alert('ESC pressed - Exit BIOS')">ESC</span>Exit
-            <span style="background-color: #00ff00; color: #000000; padding: 0 2px; margin: 0 5px 0 10px;">↑↓</span>Select
+            <span style="background-color: #00ff00; color: #000000; padding: 0 2px; margin-right: 2px; cursor: pointer;"">ESC</span>Exit Dev Mode
+            <span style="background-color: #00ff00; color: #000000; padding: 0 2px; margin: 0 5px 0 10px;">Q</span>Go to Landing Page
         </div>
     </div>
 </div>
@@ -305,7 +453,78 @@ CURRENT EXPERIMENTS:
 - IDENTITY FLUIDITY TESTING
         
 ERROR: SUBJECT LAIN NOT FOUND
-ERROR: SUBJECT LAIN EVERYWHERE`
+ERROR: SUBJECT LAIN EVERYWHERE`,
+
+        'education-info': `> EDUCATIONAL DATABASE ACCESS
+        
+INSTITUTION: TEXAS A&M UNIVERSITY
+DEGREE: BACHELOR OF ARTS - COMPUTER SCIENCE
+MINOR: ENGLISH LITERATURE
+        
+ACADEMIC STATUS: IN PROGRESS
+COMPLETION: MAY 2027
+CURRENT STANDING: JUNIOR
+        
+SPECIALIZATIONS:
+- SYSTEMS PROGRAMMING
+- ALGORITHMS & DATA STRUCTURES
+- SOFTWARE ENGINEERING
+- LITERARY ANALYSIS
+        
+GPA: CLASSIFIED`,
+
+        'scale-ai-intern': `> SCALE AI PERSONNEL FILE
+        
+POSITION: TECHNICAL ADVISOR INTERN
+DEPARTMENT: ARTIFICIAL INTELLIGENCE
+CLEARANCE LEVEL: ACTIVE
+        
+PROJECT: ARC-AGI DATASET ANALYSIS
+COLLABORATION: GOOGLE DEEPMIND
+MISSION: HUMANITY'S LAST EXAM
+        
+RESPONSIBILITIES:
+- DATASET EVALUATION
+- AI SAFETY PROTOCOLS
+- CONSCIOUSNESS RESEARCH
+        
+STATUS: CURRENT ASSIGNMENT
+THREAT LEVEL: MINIMAL`,
+
+        'robotics-researcher': `> ROBOTICS RESEARCH PROTOCOL
+        
+PROJECT: MULTI-AGENT TASK ALLOCATION
+INSTITUTION: TEXAS A&M UNIVERSITY
+DURATION: MAY 2025 - AUG 2025
+        
+ALGORITHM STATUS: PATENT PENDING
+SIMULATION PLATFORM: GAZEBO + ROS2
+APPLICATION: WAREHOUSE OPTIMIZATION
+        
+RESEARCH OUTCOMES:
+- EFFICIENCY IMPROVEMENT: 35%
+- COLLISION REDUCTION: 89%
+- TASK COMPLETION: OPTIMIZED
+        
+ACHIEVEMENT: BREAKTHROUGH`,
+
+        'daikin-intern': `> DAIKIN SYSTEMS ACCESS LOG
+        
+POSITION: SOFTWARE ENGINEERING INTERN
+COMPANY: DAIKIN NORTH AMERICA
+PERIOD: MAY 2023 - AUG 2023
+        
+PROJECT: HISTORICAL DATA PROCESSING
+ARCHITECTURE: MVC ADMINISTRATIVE APP
+DATA VOLUME: 20TB+ PROCESSED
+        
+TECHNOLOGIES:
+- PYTHON AUTOMATION SCRIPTS
+- AWS S3 DATA RETRIEVAL  
+- AWS LAMBDA INTEGRATION
+        
+EFFICIENCY GAIN: +300%
+LEGACY SYSTEMS: MODERNIZED`
     };
     
     // Global functions for hover functionality (accessible from HTML)
@@ -418,12 +637,17 @@ ERROR: SUBJECT LAIN EVERYWHERE`
             }
         }
         
-        // Add event listener for ESC key
+        // Add event listener for ESC key and Q key
         document.addEventListener('keydown', function(event) {
             // Check if ESC key was pressed (key code 27 or 'Escape')
             if (event.key === 'Escape' || event.keyCode === 27) {
                 event.preventDefault(); // Prevent default ESC behavior
                 toggleInterface();
+            }
+            // Check if Q key was pressed
+            else if (event.key === 'q' || event.key === 'Q') {
+                event.preventDefault(); // Prevent default Q behavior
+                window.location.href = 'index.html';
             }
         });
         

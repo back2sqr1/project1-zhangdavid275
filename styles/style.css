@@ -325,7 +325,7 @@ body {
 
 .file-folder {
   position: relative;
-  margin: -10px 0 5px 0;
+  margin: -5px 0 5px 0;
   background: rgba(0, 0, 0, 0.9);
   transition: all 0.3s ease;
   overflow: visible;
