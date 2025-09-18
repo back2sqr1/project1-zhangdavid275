@@ -14,8 +14,9 @@
   font-display: swap;
 }
 
-/* Hide background video by default */
-#background-video {
+/* Hide background video and audio by default */
+#background-video,
+#lain_ambience {
   display: none;
 }
 
