@@ -6,6 +6,19 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'AcPlus';
+  src: url('../fonts/AcPlus_IBM_VGA_8x16.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hide background video by default */
+#background-video {
+  display: none;
+}
+
 body {
   font-family: 'MomsTypewriter', 'Courier New', monospace;
   margin: 0;
@@ -122,15 +135,11 @@ body {
   margin: 10px 0;
 }
 
-.binary-text {
-  font-family: 'Courier New', monospace;
-  font-size: 15px;
-  color: #006600;
-  word-break: break-all;
-  line-height: 1.1;
-  margin: 15px 0;
-  background-color: rgba(0, 51, 0, 0.1);
-  padding: 10px;
+.terminal-text {
+  color: #00ff00;
+  font-size: 11px;
+  margin: 10px 0;
+  font-family: 'AcPlus', 'Courier New', Courier, monospace;
 }
 
 /* Switch styles for toggle functionality */
@@ -669,3 +678,17 @@ body.service-page {
   padding: 5px;
 }
 
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.5; }
+}
+
+/* Hover Zone Debug Styles */
+.hover-zone {
+  display: none;
+}
+
+#lain_ambience {
+  display: none;
+}

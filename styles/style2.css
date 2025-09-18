@@ -1,0 +1,82 @@
+
+/* Background GIF styling - in background behind terminals */
+#background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* keep width auto */
+  width: 60%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hide all content except the background video */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* Hide all main content */
+#heading,
+.content-section,
+.qualification-section,
+.file-cabinet,
+.portfolio-title-container,
+.qualification-main-container,
+.back-link,
+.obi-strip,
+.qualifications-right-column,
+.screen-container {
+  display: none !important;
+}
+
+/* Hide any text or UI elements */
+/* h1, h2, h3, h4, h5, h6,
+p, div, span, a, button,
+.tech-text,
+
+*/
+.qualification-details,
+.file-details,
+.project-card,
+.video-container {
+  display: none !important;
+}  
+/* Hover Zone Debug Styles */
+.hover-zone {
+  border: 2px dashed #ff0000 !important;
+  background-color: rgba(255, 0, 0, 0.2) !important;
+  opacity: 0.7 !important;
+  transition: all 0.3s ease !important;
+  z-index: 15 !important;
+}
+    
+.hover-zone:hover {
+  background-color: rgba(255, 255, 0, 0.4) !important;
+  border-color: #ffff00 !important;
+  opacity: 0.9 !important;
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5) !important;
+}
+
+.hover-zone::before {
+  content: attr(data-content);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #00ff00;
+  padding: 4px 8px;
+  border: 1px solid #00ff00;
+  border-radius: 3px;
+  font-family: 'IBM_VGA', 'Courier New', monospace;
+  font-size: 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 20 !important;
+}
